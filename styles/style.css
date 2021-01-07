@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli:wght@400;700&display=swap');
+
+:root {
+    --background-color: rgb(236, 233, 230);
+    --line-border-fill: rgb(119, 105, 94);
+    --line-border-empty: rgb(255, 255, 255);
+    --circle-background-color: rgb(255, 255, 255);
+    --circle-background-color-active: rgb(235, 231, 231);
+    --circle-font-color: rgb(156, 156, 156);
+    --circle-border-color-no-progress: rgb(206, 205, 205);
+    --circle-border-color-active: rgb(119, 105, 94);
+    --button-background-color: rgb(119, 105, 94);
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Muli", sans-serif;
+    background: var(--background-color);
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+}
+
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 2em;
+    max-width: 100%;
+    width: 350px;
+}
+
+.progress-container::before {
+    content: "";
+    background-color: var(--line-border-empty);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 0.3em;
+    width: 100%;
+    z-index: -1;
+}
+
+.progress {
+    background-color: var(--line-border-fill);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 5px;
+    width: 0;
+    z-index: -1;
+    transition: .5s ease;
+}
+
+.circle {
+    background-color: var(--circle-background-color);
+    color: var(--circle-font-color);
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2.5px solid var(--circle-border-color-no-progress);
+    transition: .4s ease .2s;
+}
+
+.circle.active {
+    border-color: var(--circle-border-color-active);
+    background-color: var(--circle-background-color-active);
+    color: var(--circle-border-color-active);
+    font-weight: 500;
+}
+
+
+
+.btn {
+    background-color: var(--button-background-color);
+    color: #fff;
+    border: none;
+    border-radius: 0.5em;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1em;
+    padding: 0.5em 2em;
+    margin: 0.3em;
+}
+
+.btn:active {
+    transform: scale(0.9);
+}
+
+.btn:focus {
+    outline: 0;
+}
+
+.btn:disabled {
+    background-color: var(--circle-border-color-no-progress);
+    cursor: not-allowed;
+}
